@@ -5,11 +5,17 @@
   box-shadow: 0 15px 40px -20px rgba(40, 44, 63, 0.15);
   background-color: #fff;
   align-items: center;
+  @media screen and (max-width: 500px) {
+    padding: 1rem;
+  }
 }
 
 .nav-items {
   display: flex;
   gap: 2rem;
+  @media screen and (max-width: 500px) {
+    gap: 0.8rem;
+  }
 }
 
 .nav-item {
