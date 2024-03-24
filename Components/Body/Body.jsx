@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import Card from "../Card/Card";
 
 const Body = () => {
   const [resData, setResData] = useState([]);
@@ -32,7 +33,15 @@ const Body = () => {
     }
   }
 
-  return <div>Body Component</div>;
+  return (
+    <div>
+      <div className="flex flex-wrap gap-3 px-2 py-5">
+        {resData.map((res) => (
+          <Card res={res} />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Body;

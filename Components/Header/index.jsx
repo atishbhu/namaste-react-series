@@ -1,37 +1,26 @@
-import Logo from "../icon/logo"
-import './style.css'
+import Logo from "../icon/logo";
 
 const Header = () => {
-    return (
+  return (
+    <div>
+      <div className="flex justify-between p-5 shadow-xl">
         <div>
-            <div className="header">
-                <div className="logo-container">
-                    <div className="logo">
-                        <Logo />
-                    </div>
-                </div>
-                <div className="navitem-container">
-                    <div className="nav-items">
-                        <div className="nav-item">
-                            Search
-                        </div>
-                        <div className="nav-item">
-                            Offers
-                        </div>
-                        <div className="nav-item">
-                            About Us
-                        </div>
-                        <div className="nav-item">
-                            Sign in
-                        </div>
-                        <div className="nav-item">
-                            Cart
-                        </div>
-                    </div>
-                </div>
-            </div>
+          <div>
+            <Logo />
+          </div>
         </div>
-    )
-}
+        <div>
+          <div className="flex gap-4">
+            <div>Search</div>
+            <div>Offers</div>
+            <div>About Us</div>
+            <div>Sign in</div>
+            <div>Cart</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default Header
+export default Header;
