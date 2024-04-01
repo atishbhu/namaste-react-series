@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import Card from "../Card/Card";
 
-const Body = () => {
+const Body = ({ isSearchClick }) => {
   const [resData, setResData] = useState([]);
+  const [searchText, setSearchText] = useState("");
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
     getRestaurants();
@@ -28,15 +30,40 @@ const Body = () => {
       }
       const resData = await checkJsonData(json);
       setResData(resData);
+      setFilteredData(resData);
     } catch (error) {
       console.log(error);
     }
   }
 
+  const handleChange = (e) => {
+    const val = e.target.value;
+    setSearchText(val);
+  };
+
+  const handleClick = () => {
+    const filteredNewData = resData.filter((res) =>
+      res?.info?.name?.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredData(filteredNewData);
+  };
+
   return (
     <div>
+      {isSearchClick && (
+        <div className="flex gap-3 p-5">
+          <input
+            type="text"
+            placeholder="search..."
+            value={searchText}
+            onChange={handleChange}
+            className="p-2 rounded-sm"
+          />
+          <button onClick={handleClick}>search</button>
+        </div>
+      )}
       <div className="flex flex-wrap gap-3 px-2 py-5">
-        {resData.map((res) => (
+        {filteredData.map((res) => (
           <Card res={res} />
         ))}
       </div>

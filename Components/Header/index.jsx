@@ -1,6 +1,6 @@
 import Logo from "../icon/logo";
 
-const Header = () => {
+const Header = ({ handleSearchClick }) => {
   return (
     <div>
       <div className="flex justify-between p-5 shadow-xl">
@@ -11,7 +11,7 @@ const Header = () => {
         </div>
         <div>
           <div className="flex gap-4">
-            <div>Search</div>
+            <div onClick={handleSearchClick}>Search</div>
             <div>Offers</div>
             <div>About Us</div>
             <div>Sign in</div>
