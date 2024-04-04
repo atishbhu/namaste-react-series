@@ -1,21 +1,26 @@
 import Logo from "../icon/logo";
+import { Link } from "react-router-dom";
 
-const Header = ({ handleSearchClick }) => {
+const Header = () => {
   return (
     <div>
       <div className="flex justify-between p-5 shadow-xl">
         <div>
           <div>
-            <Logo />
+            <Link to="/">
+              <Logo />
+            </Link>
           </div>
         </div>
         <div>
           <div className="flex gap-4">
-            <div onClick={handleSearchClick}>Search</div>
-            <div>Offers</div>
-            <div>About Us</div>
+            <Link to="/about">
+              <div>About Us</div>
+            </Link>
+            <Link to="/contact">
+              <div>Contact Us</div>
+            </Link>
             <div>Sign in</div>
-            <div>Cart</div>
           </div>
         </div>
       </div>
