@@ -48,6 +48,8 @@ const Body = ({ isSearchClick }) => {
     setFilteredData(filteredNewData);
   };
 
+  console.log('dummy')
+
   return (
     <div>
       <div className="flex gap-3 p-5">
