@@ -1,41 +1,19 @@
 import { useState, useEffect } from "react";
 import Card from "../Card/Card";
 import SearchBox from "../Search";
+import useResturants from "../../Hooks/useResturant";
 
-const Body = ({ isSearchClick }) => {
-  const [resData, setResData] = useState([]);
+const Body = () => {
   const [searchText, setSearchText] = useState("");
   const [filteredData, setFilteredData] = useState([]);
+  const { resData } = useResturants();
 
   useEffect(() => {
-    getRestaurants();
-  }, []);
-
-  async function getRestaurants() {
-    try {
-      const response = await fetch(
-        "https://foodfire.onrender.com/api/restaurants?lat=21.1702401&lng=72.83106070000001&page_type=DESKTOP_WEB_LISTING"
-      );
-      const json = await response.json();
-
-      async function checkJsonData(jsonData) {
-        for (let i = 0; i < jsonData?.data?.cards.length; i++) {
-          let checkData =
-            json?.data?.cards[i]?.card?.card?.gridElements?.infoWithStyle
-              ?.restaurants;
-
-          if (checkData !== undefined) {
-            return checkData;
-          }
-        }
-      }
-      const resData = await checkJsonData(json);
-      setResData(resData);
+    if (resData) {
       setFilteredData(resData);
-    } catch (error) {
-      console.log(error);
     }
-  }
+  }, [resData]);
+
 
   const handleChange = (e) => {
     const val = e.target.value;
@@ -48,8 +26,6 @@ const Body = ({ isSearchClick }) => {
     );
     setFilteredData(filteredNewData);
   };
-
-  console.log("dummy");
 
   return (
     <div>
