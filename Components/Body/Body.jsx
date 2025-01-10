@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "../Card/Card";
+import SearchBox from "../Search";
 
 const Body = ({ isSearchClick }) => {
   const [resData, setResData] = useState([]);
@@ -48,20 +49,15 @@ const Body = ({ isSearchClick }) => {
     setFilteredData(filteredNewData);
   };
 
-  console.log('dummy')
+  console.log("dummy");
 
   return (
     <div>
-      <div className="flex gap-3 p-5">
-        <input
-          type="text"
-          placeholder="search..."
-          value={searchText}
-          onChange={handleChange}
-          className="p-2 rounded-sm"
-        />
-        <button onClick={handleClick}>search</button>
-      </div>
+      <SearchBox
+        searchText={searchText}
+        handleChange={handleChange}
+        handleClick={handleClick}
+      />
       <div className="flex flex-wrap gap-3 px-2 py-5">
         {filteredData.map((res) => (
           <Card res={res} />
